@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stockafella - Investment Knowledge Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #0066FF;
+            --light-gray: #F5F5F5;
+            --mid-gray: #E0E0E0;
+            --dark-gray: #666666;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary);
+            background-color: #FFFFFF;
+            line-height: 1.5;
+            padding-bottom: 60px;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--mid-gray);
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+        }
+        
+        .nav-link {
+            padding: 8px 16px;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .nav-link.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--mid-gray);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .card-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .card-content {
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+        
+        .card-tag {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-weight: 500;
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background-color: var(--light-gray);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .daily-mission-card {
+            border-left: 4px solid var(--accent);
+        }
+        
+        .category-card {
+            padding: 20px;
+            background: #FAFAFA;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-card:hover {
+            background: #F0F0F0;
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 24px;
+        }
+        
+        .featured-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .featured-card-image {
+            height: 160px;
+            background-color: #F0F0F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        .audio-player {
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 16px;
+        }
+        
+        .audio-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .audio-description {
+            font-size: 14px;
+            color: var(--dark-gray);
+            margin-bottom: 12px;
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .play-button {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .audio-progress {
+            flex-grow: 1;
+            height: 4px;
+            background: var(--light-gray);
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .audio-progress-bar {
+            height: 100%;
+            width: 0;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .audio-time {
+            font-size: 12px;
+            color: var(--dark-gray);
+            width: 80px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        
+        .streak-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 1px solid var(--mid-gray);
+        }
+        
+        .streak-day {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .streak-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            background: var(--light-gray);
+        }
+        
+        .streak-circle.active {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .streak-circle.completed {
+            background: #000000;
+            color: white;
+        }
+        
+        .streak-label {
+            font-size: 10px;
+            color: var(--dark-gray);
+        }
+        
+        .mission-list {
+            margin-top: 16px;
+        }
+        
+        .mission-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--mid-gray);
+        }
+        
+        .mission-checkbox {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--mid-gray);
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .mission-checkbox.checked {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .insight-badge {
+            background: #000000;
+            color: white;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 100px;
+            margin-left: 6px;
+        }
+
+        .waveform {
+            width: 100%;
+            height: 60px;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAABkCAYAAAA1u5R1AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAXZSURBVHgB7d0/bNxGHsDhH40xwGWQIt1ZKHSVm+7SwgUWcFEc4ApXwWGrw1WuEhgngAkfkM5VClcHXxpXAdKogYsUwSDdVSkCpDGQJhmSQ446W38o8WnI5TwPIFjSWiuB+/Hj7OyajUEFNve3BuXDxmzbk3JbbttTO/4rNvO2Nz1t5ct2WXbfHx/NJwAAAPicjcpfbO5tDcvD1y2PeDVfHOX2OGr7ZfnwuvDZlA/z8ml79O7kaF4+/hgAAAAMs/hiZ+to+LC/NarGND90C61/HVYrf5cEdMr9K8hfJJT3SjjfSEM9XLJbCOYAAACwOrPb28PBcDgsD+5XK9jLqsiWr+OiafcORovwPi/h+m2K2eXx+Dh/VD7Obtzp1/rhl9nBfetPAAAASMPs5vbm5VdnZ+XhblW3OK3asl7B+uo7aHcPzj6+O+5f2cxPssiv3nJcjNwBAAAgTSeD2zene88/lMeHg439rBptNYIP6GMGdQAAAFamzKFnKXPZr1YnnxQ1axuwuzkJl157fy+D+uXO0i56OeYt7gAAAERlz8lcDutL3FqB+jLXv+/qJuy1X3lfvoJe7Ont8aF9agAAAERryx6UL5aN05e6anu7q6CNDhMAAIBOmNyar59nPj6X9QX7ddYTrk/ng9ubZ+WSgzKKTwfli9PUXh4AAICYbdx5NMnl1/n7weg4l+t2snDo/YteQ7ieBAAAAJfJxHpuTy5/N9RPQK/rcL0ONxfe//r42tlrX5/LlyVPBwAAgJAMFz9frtsepC9GuKuzW6+3ujcF9YVX3hZz564PFgAAAKgtXO8c3L87Lov0DHIxrRdm534dtGZZ18H6ogAfvjq6XMxL9rswAQAAgCat7J97Pk0R0wZXN8cvrZVdB/bGXveyUn/fbnv95LxM7n+XhwMAAIBVWQvZUV+YrwP3opN+/XGjE98BAADAqnSii97k/PDr25eDH/7tBXYAAABIXVeH16+V4H5+Y/GLY+FsgAAAAJDF2jUvnfbrm8OLi/UXg9E3AAAAEKoQp6a3tgcAAAAQphADujnzAAAAEIGQA7op7wAAABCwkAO6EXcAAAAIWKgB3XR3AAAAiFyoewoH1T+w29zeHJQHO9n2ex4OAAAAnRN6QK9fl9/s3xqUhzn85pcm7da3588/HB8J7AAAANAhoQb0QVmcP2w2pW3cOXhX3xdWBwAAIBqDPnx1Kt31wzxqkV4Wp8/Lw/0k3h0AAADgM6F20FMO6W+Oj8ZlwX7sXQEAAIBOGWTO9eFNe9T78vb48Lj8eOAdAgAAgJaFGtDrwDwoX68ncd2TwfBn7w4AAAC0K9SA/qYM6N/Vr3fvb42q8e6gfLhTnTO9femd/DI7OC5hvXbsvQIAAIB2hLoPek6yV94BAABgRUIeEgcAAAAESkAHAAAAIiCgAwAAABEQ0AEAAIAICOgAAABABAR0AAAAIAICOgAAABABAR0AAACIgIAOAAAAREBABwAAACIgoAMAAAARENABAACACAjoAAAAQASGXVzUyfnhZNUvezIY/lx+7fnnj8fj9EYEAAAAtKfrHfQ3x4fj/X/sz/bvbY3K452q2jiaHx+NJvt39/79+L8/fHPx/NfnZfH+qnyNnfLrnejgAgAAwGp1OqBvfPfDXnm4mNyaX0zubp+Xlfc//+/Xp8nvX+yf7X99Xnfc7xzcv1s+P81vja5y/KwE9Z+EewAAAFiNLnfQB4Ph1f9Bh/K9p4O9Jzu5TPwWH45M8vuj8vH3+XB0lc8DAACAtHU5oN80WE+mw73MQB/k9+tOejWMsXi+Lurbg9HRxu4Pf1z79wcAAIDUdDmgD3I1GMxax757u1P+gSm83z/MLzcf/fXXd1d9W1cDAAAApKbLs7jf5JpXryEAAAAgQV3uoA9yy9fdsTc9AAAASMR/AIsuf7edDZjWAAAAAElFTkSuQmCC');
+            background-size: cover;
+            background-position: center;
+            margin: 8px 0;
+            border-radius: 4px;
+        }
+
+        /* Added styles for expandable book summaries */
+        .book-summary {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .book-summary.expanded {
+            max-height: 500px;
+        }
+
+        /* Page content sections */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        /* Premium content teaser */
+        .premium-overlay {
+            position: relative;
+        }
+
+        .premium-content {
+            position: relative;
+        }
+
+        .premium-content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+            pointer-events: none;
+        }
+
+        .premium-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .premium-badge i {
+            margin-right: 6px;
+        }
+
+        /* Category page styles */
+        .subcategory-item {
+            padding: 12px 16px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--mid-gray);
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .subcategory-item:hover {
+            background: var(--light-gray);
+        }
+
+        .progress-badge {
+            background-color: var(--accent);
+            color: white;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 100px;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="bg-black text-white w-10 h-10 rounded-md flex items-center justify-center mr-3">
+                        <span class="text-lg font-bold">S</span>
+                    </div>
+                    <span class="logo">Stockafella</span>
+                </div>
+                <nav class="hidden md:flex">
+                    <a href="#" class="nav-link" data-page="for-you">For You</a>
+                    <a href="#" class="nav-link" data-page="categories">Categories</a>
+                    <a href="#" class="nav-link" data-page="library">Library</a>
+                    <a href="#" class="nav-link" data-page="progress">Progress</a>
+                </nav>
+                <div class="flex items-center">
+                    <button class="flex items-center px-4 py-2 rounded-md bg-black text-white">
+                        <i class="fas fa-crown mr-2"></i>
+                        <span>Upgrade</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- For You Page -->
+    <main class="container py-8">
+        <div class="page-content active" id="for-you-page">
+            <!-- Streak & Daily Mission Section -->
+            <section class="mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <h2 class="section-title">Your Daily Streak</h2>
+                        <div class="streak-container">
+                            <div class="streak-day">
+                                <div class="streak-circle completed">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span class="streak-label">Mon</span>
+                            </div>
+                            <div class="streak-day">
+                                <div class="streak-circle completed">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span class="streak-label">Tue</span>
+                            </div>
+                            <div class="streak-day">
+                                <div class="streak-circle active">21</div>
+                                <span class="streak-label">Wed</span>
+                            </div>
+                            <div class="streak-day">
+                                <div class="streak-circle">0</div>
+                                <span class="streak-label">Thu</span>
+                            </div>
+                            <div class="streak-day">
+                                <div class="streak-circle">0</div>
+                                <span class="streak-label">Fri</span>
+                            </div>
+                            <div class="streak-day">
+                                <div class="streak-circle">0</div>
+                                <span class="streak-label">Sat</span>
+                            </div>
+                            <div class="streak-day">
+                                <div class="streak-circle">0</div>
+                                <span class="streak-label">Sun</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-bold text-lg mt-8 mb-4">Your daily mission</h3>
+                        <div class="mission-list">
+                            <div class="mission-item">
+                                <div class="mission-checkbox checked">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Complete Introduction to Technical Analysis</div>
+                                    <div class="text-gray-500 text-sm">5 min read</div>
+                                </div>
+                            </div>
+                            <div class="mission-item">
+                                <div class="mission-checkbox checked">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">Listen to Chart Patterns Audio</div>
+                                    <div class="text-gray-500 text-sm">2 min listen</div>
+                                </div>
+                            </div>
+                            <div class="mission-item">
+                                <div class="mission-checkbox"></div>
+                                <div>
+                                    <div class="font-medium">Complete the daily quiz</div>
+                                    <div class="text-gray-500 text-sm">3 questions</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-medium">Daily progress</span>
+                                <span class="text-sm font-medium" id="daily-progress">2/3 tasks</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="daily-progress-bar" style="width: 67%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 class="section-title">Your Progress</h2>
+                        <div class="card p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Weekly Stats</h3>
+                                    <p class="text-sm text-gray-500" id="weekly-date-range">May 22 - May 28</p>
+                                </div>
+                                <span class="bg-black text-white rounded-full px-3 py-1 text-xs font-medium" id="week-number">Week 21</span>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Days active</span>
+                                    <span class="text-sm font-medium" id="days-active">3/7</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="days-active-bar" style="width: 43%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Lessons completed</span>
+                                    <span class="text-sm font-medium" id="lessons-completed">5/10</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="lessons-completed-bar" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Audio minutes</span>
+                                    <span class="text-sm font-medium" id="audio-minutes">15/30</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="audio-minutes-bar" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- For You Section -->
+            <section class="mb-12">
+                <h2 class="section-title" id="for-you">For You</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Featured Card 1 -->
+                    <div class="card featured-card" data-article="market-cycles">
+                        <div class="featured-card-image bg-gray-100">
+                            Stock Market Basics
+                        </div>
+                        <div class="p-4 flex-grow">
+                            <h3 class="card-title">Understanding Market Cycles</h3>
+                            <p class="card-content">Learn the four stages of market cycles and how to recognize them to make better investment decisions.</p>
+                        </div>
+                        <div class="px-4 pb-4 flex justify-between items-center">
+                            <span class="card-tag">5 min read</span>
+                            <div class="flex items-center">
+                                <span class="text-xs text-gray-500 mr-2">14</span>
+                                <i class="fas fa-key text-xs text-gray-500"></i>
+                                <span class="insight-badge ml-2">Insight</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Card 2 -->
+                    <div class="card featured-card" data-article="support-resistance">
+                        <div class="featured-card-image bg-gray-100">
+                            Technical Analysis
+                        </div>
+                        <div class="p-4 flex-grow">
+                            <h3 class="card-title">Support & Resistance Explained</h3>
+                            <p class="card-content">Discover how to identify key support and resistance levels and use them to plan your entries and exits.</p>
+                        </div>
+                        <div class="px-4 pb-4 flex justify-between items-center">
+                            <span class="card-tag">7 min read</span>
+                            <div class="flex items-center">
+                                <span class="text-xs text-gray-500 mr-2">23</span>
+                                <i class="fas fa-key text-xs text-gray-500"></i>
+                                <span class="insight-badge ml-2">Premium</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Card 3 -->
+                    <div class="card featured-card" data-article="financial-statements">
+                        <div class="featured-card-image bg-gray-100">
+                            Fundamental Analysis
+                        </div>
+                        <div class="p-4 flex-grow">
+                            <h3 class="card-title">Reading Financial Statements</h3>
+                            <p class="card-content">Master the basics of financial statements to evaluate a company's health before investing.</p>
+                        </div>
+                        <div class="px-4 pb-4 flex justify-between items-center">
+                            <span class="card-tag">6 min read</span>
+                            <div class="flex items-center">
+                                <span class="text-xs text-gray-500 mr-2">19</span>
+                                <i class="fas fa-key text-xs text-gray-500"></i>
+                                <span class="insight-badge ml-2">New</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audio Preview Section -->
+            <section class="mb-12">
+                <h2 class="section-title">Audio Lessons</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Technical Analysis Audio -->
+                    <div class="card p-6">
+                        <div class="audio-player">
+                            <h3 class="audio-title">Technical Analysis Fundamentals</h3>
+                            <p class="audio-description">Learn the three core principles of technical analysis and how to apply them to your trading strategy.</p>
+                            <div class="waveform"></div>
+                            <div class="audio-controls">
+                                <div class="play-button" id="play-technical">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="audio-progress" id="progress-technical">
+                                    <div class="audio-progress-bar" id="progress-bar-technical"></div>
+                                </div>
+                                <div class="audio-time" id="time-technical">0:00 / 0:21</div>
+                            </div>
+                            <audio id="audio-technical" preload="metadata">
+                                <source src="https://cdn1.genspark.ai/user-upload-image/1/4b24d41e-05f4-4e98-8f54-abb5f83baaaf.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <!-- Balance Sheet Analysis Audio -->
+                    <div class="card p-6">
+                        <div class="audio-player">
+                            <h3 class="audio-title">Balance Sheet Basics</h3>
+                            <p class="audio-description">Understand the key components of a balance sheet and how to evaluate a company's financial health.</p>
+                            <div class="waveform"></div>
+                            <div class="audio-controls">
+                                <div class="play-button" id="play-balance">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="audio-progress" id="progress-balance">
+                                    <div class="audio-progress-bar" id="progress-bar-balance"></div>
+                                </div>
+                                <div class="audio-time" id="time-balance">0:00 / 0:22</div>
+                            </div>
+                            <audio id="audio-balance" preload="metadata">
+                                <source src="https://cdn1.genspark.ai/user-upload-image/1/fa8f7aea-65ec-437d-8b4f-da4acae3cf88.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart Patterns Audio -->
+                    <div class="card p-6">
+                        <div class="audio-player">
+                            <h3 class="audio-title">Chart Patterns Explained</h3>
+                            <p class="audio-description">Discover how to identify and trade common chart patterns for better market analysis.</p>
+                            <div class="waveform"></div>
+                            <div class="audio-controls">
+                                <div class="play-button" id="play-chart">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="audio-progress" id="progress-chart">
+                                    <div class="audio-progress-bar" id="progress-bar-chart"></div>
+                                </div>
+                                <div class="audio-time" id="time-chart">0:00 / 0:21</div>
+                            </div>
+                            <audio id="audio-chart" preload="metadata">
+                                <source src="https://cdn1.genspark.ai/user-upload-image/1/67e00273-f43c-4b81-80f0-8841005b9a59.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                    
+                    <!-- Coming Soon Audio -->
+                    <div class="card p-6 bg-gray-50">
+                        <div class="audio-player opacity-75">
+                            <h3 class="audio-title">Candlestick Patterns <span class="text-xs ml-2 text-gray-500">Coming Soon</span></h3>
+                            <p class="audio-description">Learn how to read and interpret Japanese candlestick patterns for better timing of trades.</p>
+                            <div class="waveform opacity-50"></div>
+                            <div class="audio-controls">
+                                <div class="play-button bg-gray-400">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="audio-progress">
+                                    <div class="audio-progress-bar" style="width:0%"></div>
+                                </div>
+                                <div class="audio-time">0:00 / 0:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="mb-12">
+                <h2 class="section-title">Categories</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="category-card" data-category="technical-analysis">
+                        <div class="category-icon">
+                            <i class="fas fa-chart-line text-black"></i>
+                        </div>
+                        <h3 class="font-medium">Technical Analysis</h3>
+                    </div>
+                    <div class="category-card" data-category="fundamentals">
+                        <div class="category-icon">
+                            <i class="fas fa-file-invoice-dollar text-black"></i>
+                        </div>
+                        <h3 class="font-medium">Fundamentals</h3>
+                    </div>
+                    <div class="category-card" data-category="risk-management">
+                        <div class="category-icon">
+                            <i class="fas fa-balance-scale text-black"></i>
+                        </div>
+                        <h3 class="font-medium">Risk Management</h3>
+                    </div>
+                    <div class="category-card" data-category="psychology">
+                        <div class="category-icon">
+                            <i class="fas fa-brain text-black"></i>
+                        </div>
+                        <h3 class="font-medium">Psychology</h3>
+                    </div>
+                    <div class="category-card" data-category="options">
+                        <div class="category-icon">
+                            <i class="fas fa-hand-holding-usd text-black"></i>
+                        </div>
+                        <h3 class="font-medium">Options</h3>
+                    </div>
+                    <div class="category-card" data-category="portfolio">
+                        <div class="category-icon">
+                            <i class="fas fa-chart-pie text-black"></i>
+                        </div>
+                        <h3 class="font-medium">Portfolio</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommended Books Section -->
+            <section class="mb-12">
+                <h2 class="section-title">Recommended Books</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card book-card" data-book="trading-zone">
+                        <div class="p-4 bg-gray-100 flex items-center justify-center" style="height: 180px;">
+                            <div class="text-center">
+                                <div class="font-bold">Trading in the Zone</div>
+                                <div class="text-sm text-gray-500">Mark Douglas</div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600">Master the market with the right mindset and psychological approach to trading.</p>
+                            <div class="mt-4 flex justify-between">
+                                <span class="card-tag">Psychology</span>
+                                <span class="text-xs text-gray-500">12 min summary</span>
+                            </div>
+                            <div class="book-summary mt-4 text-sm text-gray-600">
+                                <p class="mb-2">Mark Douglas's "Trading in the Zone" is considered one of the most important books on the psychology of trading. The book addresses the psychological challenges traders face and provides strategies to overcome them.</p>
+                                <p class="mb-2"><b>Key Insights:</b></p>
+                                <ul class="list-disc pl-5 mb-3">
+                                    <li>Trading success is 80% psychological and 20% methodological</li>
+                                    <li>The importance of developing a probabilistic mindset</li>
+                                    <li>How to eliminate emotional responses to trading</li>
+                                    <li>Techniques for consistent execution of your trading strategy</li>
+                                </ul>
+                                <p>This book is essential reading for traders struggling with consistency or emotional decision-making in their trading journey.</p>
+                            </div>
+                            <button class="expand-summary mt-3 text-accent text-sm font-medium">Read More</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card book-card" data-book="intelligent-investor">
+                        <div class="p-4 bg-gray-100 flex items-center justify-center" style="height: 180px;">
+                            <div class="text-center">
+                                <div class="font-bold">The Intelligent Investor</div>
+                                <div class="text-sm text-gray-500">Benjamin Graham</div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600">The definitive book on value investing strategy and long-term success.</p>
+                            <div class="mt-4 flex justify-between">
+                                <span class="card-tag">Value Investing</span>
+                                <span class="text-xs text-gray-500">15 min summary</span>
+                            </div>
+                            <div class="book-summary mt-4 text-sm text-gray-600">
+                                <p class="mb-2">Benjamin Graham's "The Intelligent Investor" is widely regarded as the definitive text on value investing. First published in 1949, its principles remain remarkably relevant in today's market.</p>
+                                <p class="mb-2"><b>Key Concepts:</b></p>
+                                <ul class="list-disc pl-5 mb-3">
+                                    <li>The difference between investing and speculating</li>
+                                    <li>Mr. Market metaphor for understanding market psychology</li>
+                                    <li>Margin of Safety principle for reducing investment risk</li>
+                                    <li>Defensive vs. enterprising investor strategies</li>
+                                    <li>How to analyze financial statements to find undervalued companies</li>
+                                </ul>
+                                <p>Warren Buffett, Graham's most famous student, has called it "the best book on investing ever written." The book emphasizes long-term strategies rather than get-rich-quick formulas.</p>
+                            </div>
+                            <button class="expand-summary mt-3 text-accent text-sm font-medium">Read More</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card book-card" data-book="technical-analysis">
+                        <div class="p-4 bg-gray-100 flex items-center justify-center" style="height: 180px;">
+                            <div class="text-center">
+                                <div class="font-bold">Technical Analysis of Financial Markets</div>
+                                <div class="text-sm text-gray-500">John Murphy</div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600">A comprehensive guide to understanding and applying technical analysis.</p>
+                            <div class="mt-4 flex justify-between">
+                                <span class="card-tag">Technical</span>
+                                <span class="text-xs text-gray-500">18 min summary</span>
+                            </div>
+                            <div class="book-summary mt-4 text-sm text-gray-600">
+                                <p class="mb-2">John Murphy's "Technical Analysis of Financial Markets" is the comprehensive bible for technical analysts. As the former technical analyst for CNBC, Murphy provides an authoritative guide to chart analysis.</p>
+                                <p class="mb-2"><b>Topics Covered:</b></p>
+                                <ul class="list-disc pl-5 mb-3">
+                                    <li>Dow Theory and its modern applications</li>
+                                    <li>Chart construction and pattern recognition</li>
+                                    <li>Moving averages and oscillators</li>
+                                    <li>Japanese candlestick charting</li>
+                                    <li>Point and figure charting techniques</li>
+                                    <li>Intermarket analysis and sector rotation</li>
+                                </ul>
+                                <p>The book includes hundreds of examples and illustrations, making complex concepts accessible to both beginners and experienced traders. It's considered required reading for anyone seeking professional certification in technical analysis.</p>
+                            </div>
+                            <button class="expand-summary mt-3 text-accent text-sm font-medium">Read More</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card book-card" data-book="one-up">
+                        <div class="p-4 bg-gray-100 flex items-center justify-center" style="height: 180px;">
+                            <div class="text-center">
+                                <div class="font-bold">One Up on Wall Street</div>
+                                <div class="text-sm text-gray-500">Peter Lynch</div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600">How to use what you already know to make money in the market.</p>
+                            <div class="mt-4 flex justify-between">
+                                <span class="card-tag">Strategy</span>
+                                <span class="text-xs text-gray-500">10 min summary</span>
+                            </div>
+                            <div class="book-summary mt-4 text-sm text-gray-600">
+                                <p class="mb-2">Peter Lynch's "One Up on Wall Street" offers a practical approach to investing based on his extraordinary success as manager of Fidelity's Magellan Fund. Lynch advocates using everyday observations to find great investment opportunities.</p>
+                                <p class="mb-2"><b>Main Principles:</b></p>
+                                <ul class="list-disc pl-5 mb-3">
+                                    <li>Average investors can outperform professionals by using their specialized knowledge</li>
+                                    <li>The "invest in what you know" philosophy</li>
+                                    <li>Classification of stocks into six categories: slow growers, stalwarts, fast growers, cyclicals, turnarounds, and asset plays</li>
+                                    <li>How to identify the "tenbagger" - stocks that increase tenfold in value</li>
+                                    <li>13 attributes of the ideal company to invest in</li>
+                                </ul>
+                                <p>Lynch's conversational writing style and humor make complex investing concepts accessible to beginners. The book emphasizes the importance of doing your own research rather than relying on market noise.</p>
+                            </div>
+                            <button class="expand-summary mt-3 text-accent text-sm font-medium">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Categories Page -->
+        <div class="page-content" id="categories-page">
+            <section class="mb-8">
+                <h2 class="section-title">Categories</h2>
+                <div class="mb-8">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div class="category-card active" data-category-page="technical-analysis">
+                            <div class="category-icon">
+                                <i class="fas fa-chart-line text-black"></i>
+                            </div>
+                            <h3 class="font-medium">Technical Analysis</h3>
+                        </div>
+                        <div class="category-card" data-category-page="fundamentals">
+                            <div class="category-icon">
+                                <i class="fas fa-file-invoice-dollar text-black"></i>
+                            </div>
+                            <h3 class="font-medium">Fundamentals</h3>
+                        </div>
+                        <div class="category-card" data-category-page="risk-management">
+                            <div class="category-icon">
+                                <i class="fas fa-balance-scale text-black"></i>
+                            </div>
+                            <h3 class="font-medium">Risk Management</h3>
+                        </div>
+                        <div class="category-card" data-category-page="psychology">
+                            <div class="category-icon">
+                                <i class="fas fa-brain text-black"></i>
+                            </div>
+                            <h3 class="font-medium">Psychology</h3>
+                        </div>
+                        <div class="category-card" data-category-page="options">
+                            <div class="category-icon">
+                                <i class="fas fa-hand-holding-usd text-black"></i>
+                            </div>
+                            <h3 class="font-medium">Options</h3>
+                        </div>
+                        <div class="category-card" data-category-page="portfolio">
+                            <div class="category-icon">
+                                <i class="fas fa-chart-pie text-black"></i>
+                            </div>
+                            <h3 class="font-medium">Portfolio</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Content - Technical Analysis -->
+                <div class="category-content active" id="technical-analysis-content">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold">Technical Analysis</h2>
+                        <div class="text-sm">
+                            <span class="font-bold text-accent">3/12</span> lessons completed
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2">
+                            <h3 class="font-bold text-lg mb-3">Overview</h3>
+                            <p class="mb-4">Technical analysis is a trading discipline that evaluates investments and identifies trading opportunities by analyzing statistical trends gathered from trading activity, such as price movement and volume.</p>
+                            <p class="mb-6">Technical analysts believe that historical trading activity and price changes of a security can be valuable indicators of the security's future price movements when paired with appropriate investing or trading rules.</p>
+
+                            <h3 class="font-bold text-lg mb-3">Subcategories</h3>
+                            <div class="space-y-3">
+                                <div class="subcategory-item flex items-center">
+                                    <i class="fas fa-chart-line mr-3 text-accent"></i>
+                                    <div class="flex-grow">
+                                        <h4 class="font-medium">Chart Patterns</h4>
+                                        <p class="text-sm text-gray-500">Learn to identify and trade common chart patterns</p>
+                                    </div>
+                                    <span class="progress-badge">2/5</span>
+                                </div>
+                                <div class="subcategory-item flex items-center">
+                                    <i class="fas fa-wave-square mr-3 text-accent"></i>
+                                    <div class="flex-grow">
+                                        <h4 class="font-medium">Indicators</h4>
+                                        <p class="text-sm text-gray-500">Master technical indicators and oscillators</p>
+                                    </div>
+                                    <span class="progress-badge">1/4</span>
+                                </div>
+                                <div class="subcategory-item flex items-center">
+                                    <i class="fas fa-bars mr-3 text-accent"></i>
+                                    <div class="flex-grow">
+                                        <h4 class="font-medium">Candlestick Patterns</h4>
+                                        <p class="text-sm text-gray-500">Japanese candlestick analysis techniques</p>
+                                    </div>
+                                    <span class="progress-badge">0/3</span>
+                                </div>
+                                <div class="subcategory-item flex items-center">
+                                    <i class="fas fa-project-diagram mr-3 text-accent"></i>
+                                    <div class="flex-grow">
+                                        <h4 class="font-medium">Trend Analysis</h4>
+                                        <p class="text-sm text-gray-500">Techniques for identifying and following trends</p>
+                                    </div>
+                                    <span class="progress-badge">0/3</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-bold text-lg mb-3">Featured Lessons</h3>
+                            <div class="card featured-card mb-4">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">Support & Resistance</h3>
+                                    <p class="card-content">Discover how to identify key support and resistance levels for better trade entries and exits.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">Basic</span>
+                                    <div class="flex items-center">
+                                        <span class="text-xs text-gray-500 mr-2">5 min</span>
+                                        <i class="fas fa-eye text-xs text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card featured-card mb-4">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">Moving Averages</h3>
+                                    <p class="card-content">Learn how to use simple and exponential moving averages to identify trends and potential reversals.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">Intermediate</span>
+                                    <div class="flex items-center">
+                                        <span class="text-xs text-gray-500 mr-2">8 min</span>
+                                        <i class="fas fa-lock text-xs text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold text-lg mb-3">Resources</h3>
+                            <div class="flex items-center p-3 bg-gray-50 rounded-md mb-2">
+                                <i class="fas fa-book mr-2 text-accent"></i>
+                                <span>Technical Analysis of Financial Markets</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-50 rounded-md">
+                                <i class="fas fa-video mr-2 text-accent"></i>
+                                <span>Chart Pattern Recognition Workshop</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg mb-4">Popular Articles</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="card">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">Introduction to Technical Analysis</h3>
+                                    <p class="card-content">Learn the core principles and assumptions behind technical analysis.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">5 min read</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-1"></i>
+                                        <span class="text-xs text-gray-500">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">Chart Types Explained</h3>
+                                    <p class="card-content">Compare line, bar, and candlestick charts and learn when to use each.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">7 min read</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-1"></i>
+                                        <span class="text-xs text-gray-500">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">The MACD Indicator</h3>
+                                    <p class="card-content">Master the Moving Average Convergence Divergence indicator for timing entries.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">10 min read</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-1"></i>
+                                        <span class="text-xs text-gray-500">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Content - Fundamentals -->
+                <div class="category-content hidden" id="fundamentals-content">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold">Fundamental Analysis</h2>
+                        <div class="text-sm">
+                            <span class="font-bold text-accent">2/10</span> lessons completed
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2">
+                            <h3 class="font-bold text-lg mb-3">Overview</h3>
+                            <p class="mb-4">Fundamental analysis is a method of evaluating securities by attempting to measure the intrinsic value of a stock. Fundamental analysts study everything from the overall economy and industry conditions to the financial condition and management of companies.</p>
+                            <p class="mb-6">The end goal is to arrive at a number that an investor can compare with a security's current price in order to see whether the security is undervalued or overvalued.</p>
+
+                            <h3 class="font-bold text-lg mb-3">Subcategories</h3>
+                            <div class="space-y-3">
+                                <div class="subcategory-item flex items-center">
+                                    <i class="fas fa-file-invoice-dollar mr-3 text-accent"></i>
+                                    <div class="flex-grow">
+                                        <h4 class="font-medium">Financial Statements</h4>
+                                        <p class="text-sm text-gray-500">Learn to analyze balance sheets, income statements, and cash flow statements</p>
+                                    </div>
+                                    <span class="progress-badge">2/4</span>
+                                </div>
+                                <div class="subcategory-item flex items-center">
+                                    <i class="fas fa-calculator mr-3 text-accent"></i>
+                                    <div class="flex-grow">
+                                        <h4 class="font-medium">Financial Ratios</h4>
+                                        <p class="text-sm text-gray-500">Master key financial ratios for company valuation</p>
+                                    </div>
+                                    <span class="progress-badge">0/3</span>
+                                </div>
+                                <div class="subcategory-item flex items-center">
+                                    <i class="fas fa-industry mr-3 text-accent"></i>
+                                    <div class="flex-grow">
+                                        <h4 class="font-medium">Industry Analysis</h4>
+                                        <p class="text-sm text-gray-500">Methods for analyzing industry trends and conditions</p>
+                                    </div>
+                                    <span class="progress-badge">0/3</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-bold text-lg mb-3">Featured Lessons</h3>
+                            <div class="card featured-card mb-4">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">Reading a Balance Sheet</h3>
+                                    <p class="card-content">Learn how to interpret a company's balance sheet to assess its financial health.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">Basic</span>
+                                    <div class="flex items-center">
+                                        <span class="text-xs text-gray-500 mr-2">6 min</span>
+                                        <i class="fas fa-eye text-xs text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card featured-card mb-4">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">Discounted Cash Flow</h3>
+                                    <p class="card-content">Master the DCF model to determine a company's intrinsic value.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">Advanced</span>
+                                    <div class="flex items-center">
+                                        <span class="text-xs text-gray-500 mr-2">12 min</span>
+                                        <i class="fas fa-lock text-xs text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold text-lg mb-3">Resources</h3>
+                            <div class="flex items-center p-3 bg-gray-50 rounded-md mb-2">
+                                <i class="fas fa-book mr-2 text-accent"></i>
+                                <span>Financial Statement Analysis</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-50 rounded-md">
+                                <i class="fas fa-calculator mr-2 text-accent"></i>
+                                <span>Valuation Calculator</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg mb-4">Popular Articles</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="card">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">Introduction to Fundamental Analysis</h3>
+                                    <p class="card-content">Learn the basics of company valuation and financial statement analysis.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">6 min read</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-1"></i>
+                                        <span class="text-xs text-gray-500">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">Income Statement Analysis</h3>
+                                    <p class="card-content">Learn how to evaluate a company's profitability and operating efficiency.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">8 min read</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-1"></i>
+                                        <span class="text-xs text-gray-500">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="p-4 flex-grow">
+                                    <h3 class="card-title">PE Ratio and Other Valuation Metrics</h3>
+                                    <p class="card-content">Learn how to use price-to-earnings and other ratios to assess stock valuation.</p>
+                                </div>
+                                <div class="px-4 pb-4 flex justify-between items-center">
+                                    <span class="card-tag">7 min read</span>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-lock text-xs text-gray-500 mr-1"></i>
+                                        <span class="text-xs text-gray-500">Premium</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other category content divs would follow the same pattern -->
+                <!-- We'll implement just these two as samples -->
+            </section>
+        </div>
+        
+        <!-- Library Page -->
+        <div class="page-content" id="library-page">
+            <section class="mb-8">
+                <h2 class="section-title">My Library</h2>
+                
+                <div class="mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex bg-gray-100 rounded-md overflow-hidden">
+                            <button class="library-filter active px-4 py-2 text-sm font-medium" data-filter="all">All</button>
+                            <button class="library-filter px-4 py-2 text-sm font-medium" data-filter="saved">Saved</button>
+                            <button class="library-filter px-4 py-2 text-sm font-medium" data-filter="completed">Completed</button>
+                            <button class="library-filter px-4 py-2 text-sm font-medium" data-filter="in-progress">In Progress</button>
+                        </div>
+                        
+                        <div class="ml-auto">
+                            <select class="bg-white border border-gray-300 rounded-md px-3 py-1 text-sm">
+                                <option>All Categories</option>
+                                <option>Technical Analysis</option>
+                                <option>Fundamentals</option>
+                                <option>Risk Management</option>
+                                <option>Psychology</option>
+                                <option>Options</option>
+                                <option>Portfolio</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="library-content" id="library-all">
+                    <h3 class="text-xl font-bold mb-4">Recently Viewed</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="card featured-card">
+                            <div class="p-4 flex-grow">
+                                <div class="flex items-center mb-2">
+                                    <span class="card-tag mr-2">Technical Analysis</span>
+                                    <div class="ml-auto">
+                                        <i class="fas fa-bookmark text-accent"></i>
+                                    </div>
+                                </div>
+                                <h3 class="card-title">Chart Pattern Recognition</h3>
+                                <p class="card-content">Learn how to identify and trade the most reliable chart patterns.</p>
+                                <div class="mt-3 flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 rounded-full bg-accent mr-2"></div>
+                                        <span class="text-xs text-gray-500">In Progress</span>
+                                    </div>
+                                    <span class="text-xs text-gray-500">75% complete</span>
+                                </div>
+                                <div class="mt-2 progress-bar-container">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card featured-card">
+                            <div class="p-4 flex-grow">
+                                <div class="flex items-center mb-2">
+                                    <span class="card-tag mr-2">Fundamentals</span>
+                                    <div class="ml-auto">
+                                        <i class="far fa-bookmark text-gray-400"></i>
+                                    </div>
+                                </div>
+                                <h3 class="card-title">Reading Financial Statements</h3>
+                                <p class="card-content">Master the basics of analyzing balance sheets, income statements, and cash flows.</p>
+                                <div class="mt-3 flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
+                                        <span class="text-xs text-gray-500">Completed</span>
+                                    </div>
+                                    <span class="text-xs text-gray-500">100% complete</span>
+                                </div>
+                                <div class="mt-2 progress-bar-container">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card featured-card">
+                            <div class="p-4 flex-grow">
+                                <div class="flex items-center mb-2">
+                                    <span class="card-tag mr-2">Psychology</span>
+                                    <div class="ml-auto">
+                                        <i class="far fa-bookmark text-gray-400"></i>
+                                    </div>
+                                </div>
+                                <h3 class="card-title">Managing Trading Emotions</h3>
+                                <p class="card-content">Learn techniques for maintaining emotional discipline while trading.</p>
+                                <div class="mt-3 flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 rounded-full bg-accent mr-2"></div>
+                                        <span class="text-xs text-gray-500">In Progress</span>
+                                    </div>
+                                    <span class="text-xs text-gray-500">30% complete</span>
+                                </div>
+                                <div class="mt-2 progress-bar-container">
+                                    <div class="progress-bar" style="width: 30%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4">Audio Lessons</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div class="card p-6">
+                            <div class="audio-player">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h3 class="audio-title">Technical Analysis Fundamentals</h3>
+                                        <p class="audio-description">Learn the three core principles of technical analysis.</p>
+                                    </div>
+                                    <span class="card-tag">5 min</span>
+                                </div>
+                                <div class="waveform"></div>
+                                <div class="audio-controls">
+                                    <div class="play-button" data-audio-id="audio-technical-lib">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="audio-progress">
+                                        <div class="audio-progress-bar" style="width:0%"></div>
+                                    </div>
+                                    <div class="audio-time">0:00 / 0:21</div>
+                                </div>
+                                <audio id="audio-technical-lib" preload="metadata">
+                                    <source src="https://cdn1.genspark.ai/user-upload-image/1/4b24d41e-05f4-4e98-8f54-abb5f83baaaf.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        </div>
+                        
+                        <div class="card p-6">
+                            <div class="audio-player">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h3 class="audio-title">Balance Sheet Basics</h3>
+                                        <p class="audio-description">Understand key components of a balance sheet.</p>
+                                    </div>
+                                    <span class="card-tag">5 min</span>
+                                </div>
+                                <div class="waveform"></div>
+                                <div class="audio-controls">
+                                    <div class="play-button" data-audio-id="audio-balance-lib">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="audio-progress">
+                                        <div class="audio-progress-bar" style="width:0%"></div>
+                                    </div>
+                                    <div class="audio-time">0:00 / 0:22</div>
+                                </div>
+                                <audio id="audio-balance-lib" preload="metadata">
+                                    <source src="https://cdn1.genspark.ai/user-upload-image/1/fa8f7aea-65ec-437d-8b4f-da4acae3cf88.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4">Saved Articles</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="card">
+                            <div class="p-4 flex-grow">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="card-tag">Risk Management</span>
+                                    <i class="fas fa-bookmark text-accent"></i>
+                                </div>
+                                <h3 class="card-title">Position Sizing Strategies</h3>
+                                <p class="card-content">Learn how to properly size your positions to manage risk effectively.</p>
+                            </div>
+                            <div class="px-4 pb-4 flex justify-between items-center">
+                                <span class="text-xs text-gray-500">8 min read</span>
+                                <span class="text-xs text-gray-500">Saved 2 days ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="p-4 flex-grow">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="card-tag">Options</span>
+                                    <i class="fas fa-bookmark text-accent"></i>
+                                </div>
+                                <h3 class="card-title">Options Basics</h3>
+                                <p class="card-content">Understanding calls, puts, and the fundamentals of options trading.</p>
+                            </div>
+                            <div class="px-4 pb-4 flex justify-between items-center">
+                                <span class="text-xs text-gray-500">12 min read</span>
+                                <span class="text-xs text-gray-500">Saved 1 week ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="p-4 flex-grow">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="card-tag">Portfolio</span>
+                                    <i class="fas fa-bookmark text-accent"></i>
+                                </div>
+                                <h3 class="card-title">Asset Allocation</h3>
+                                <p class="card-content">Strategies for diversifying your portfolio across different asset classes.</p>
+                            </div>
+                            <div class="px-4 pb-4 flex justify-between items-center">
+                                <span class="text-xs text-gray-500">10 min read</span>
+                                <span class="text-xs text-gray-500">Saved 2 weeks ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Progress Page -->
+        <div class="page-content" id="progress-page">
+            <section class="mb-8">
+                <h2 class="section-title">Your Progress</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                    <div class="lg:col-span-2">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="font-bold text-lg">Learning Summary</h3>
+                                    <p class="text-sm text-gray-500" id="progress-date-range">May 1 - May 28, 2023</p>
+                                </div>
+                                <select class="bg-white border border-gray-300 rounded-md px-3 py-1 text-sm">
+                                    <option>This Month</option>
+                                    <option>Last Month</option>
+                                    <option>Last 3 Months</option>
+                                    <option>This Year</option>
+                                </select>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <div class="text-sm font-medium text-gray-500 mb-1">Time spent learning</div>
+                                    <div class="text-2xl font-bold">3h 45m</div>
+                                    <div class="text-xs text-green-500">+15% from last month</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-500 mb-1">Lessons completed</div>
+                                    <div class="text-2xl font-bold">12</div>
+                                    <div class="text-xs text-green-500">+4 from last month</div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <div class="text-sm font-medium text-gray-500 mb-1">Current streak</div>
+                                    <div class="text-2xl font-bold">21 days</div>
+                                    <div class="text-xs text-accent">Personal best!</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-500 mb-1">Insights unlocked</div>
+                                    <div class="text-2xl font-bold">35</div>
+                                    <div class="text-xs text-green-500">+10 from last month</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <h3 class="font-bold text-lg mb-4">Category Progress</h3>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-medium">Technical Analysis</span>
+                                        <span class="text-sm">3/12 lessons</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-medium">Fundamental Analysis</span>
+                                        <span class="text-sm">2/10 lessons</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-medium">Risk Management</span>
+                                        <span class="text-sm">4/8 lessons</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-medium">Psychology</span>
+                                        <span class="text-sm">3/7 lessons</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 43%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-medium">Options</span>
+                                        <span class="text-sm">0/9 lessons</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-medium">Portfolio Building</span>
+                                        <span class="text-sm">0/6 lessons</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                            <h3 class="font-bold text-lg mb-4">Achievements</h3>
+                            
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white mb-2">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <span class="text-xs text-center">First Lesson</span>
+                                </div>
+                                
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white mb-2">
+                                        <i class="fas fa-fire"></i>
+                                    </div>
+                                    <span class="text-xs text-center">7-Day Streak</span>
+                                </div>
+                                
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white mb-2">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <span class="text-xs text-center">Technical Pro</span>
+                                </div>
+                                
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white mb-2">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <span class="text-xs text-center">Fundamentalist</span>
+                                </div>
+                                
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 mb-2">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <span class="text-xs text-center text-gray-400">Risk Manager</span>
+                                </div>
+                                
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 mb-2">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <span class="text-xs text-center text-gray-400">Psychology Master</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                            <h3 class="font-bold text-lg mb-4">Goal Setting</h3>
+                            
+                            <div class="mission-list">
+                                <div class="mission-item">
+                                    <div class="mission-checkbox"></div>
+                                    <div>
+                                        <div class="font-medium">Complete Technical Analysis course</div>
+                                        <div class="text-gray-500 text-sm">9 lessons remaining</div>
+                                    </div>
+                                </div>
+                                <div class="mission-item">
+                                    <div class="mission-checkbox"></div>
+                                    <div>
+                                        <div class="font-medium">Achieve 30-day streak</div>
+                                        <div class="text-gray-500 text-sm">9 days remaining</div>
+                                    </div>
+                                </div>
+                                <div class="mission-item">
+                                    <div class="mission-checkbox"></div>
+                                    <div>
+                                        <div class="font-medium">Listen to all audio lessons</div>
+                                        <div class="text-gray-500 text-sm">5 lessons remaining</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="mt-4 w-full py-2 border border-gray-300 rounded-md text-center text-sm font-medium">
+                                <i class="fas fa-plus mr-1"></i>
+                                Add New Goal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-4">Recent Activity</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium">Completed "Introduction to Technical Analysis"</div>
+                                <div class="text-sm text-gray-500">Today at 10:23 AM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium">Listened to "Chart Patterns Explained"</div>
+                                <div class="text-sm text-gray-500">Today at 9:15 AM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium">Achieved 21-day streak!</div>
+                                <div class="text-sm text-gray-500">Today at 9:00 AM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium">Saved "Position Sizing Strategies"</div>
+                                <div class="text-sm text-gray-500">Yesterday at 3:45 PM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium">Completed "Reading Financial Statements"</div>
+                                <div class="text-sm text-gray-500">Yesterday at 2:30 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Article Modal Templates -->
+        <div id="article-modal-market-cycles" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg w-full max-w-4xl max-h-screen overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-bold">Understanding Market Cycles</h2>
+                        <button class="modal-close text-gray-500 hover:text-black">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="premium-overlay">
+                        <div class="premium-content">
+                            <p class="mb-4">Market cycles are the periods of upward and downward movements of a market or asset class. These cycles consist of four distinct phases: accumulation, uptrend (or markup), distribution, and downtrend (or markdown). Understanding these cycles is crucial for making informed investment decisions.</p>
+                            
+                            <h3 class="text-xl font-bold mt-6 mb-3">The Four Phases of Market Cycles</h3>
+                            <ol class="list-decimal pl-5 space-y-4 mb-6">
+                                <li>
+                                    <strong>Accumulation Phase</strong>: This phase occurs after a market decline, when prices have typically bottomed out. During accumulation, sentiment is still negative, but informed investors begin to buy. Prices trade in a range, and there's relatively low volume as most market participants remain pessimistic. This is often an ideal time to buy, though it can be psychologically difficult as it goes against prevailing sentiment.
+                                </li>
+                                <li>
+                                    <strong>Uptrend (Markup) Phase</strong>: As more investors recognize the improving conditions, prices begin to rise steadily. Trading volume increases, technical indicators turn positive, and investor sentiment improves. The early part of this phase offers good buying opportunities, while the later part may be when inexperienced investors rush in (often a warning sign).
+                                </li>
+                                <li>
+                                    <strong>Distribution Phase</strong>: This phase marks the end of the uptrend. Prices typically move sideways with increased volatility. Informed investors begin to sell to less-informed, often euphoric buyers. This phase is characterized by excessive optimism, high valuations, and often increased media coverage of the asset class. Warning signs include divergences in technical indicators and rapid price advances (blow-off tops).
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="premium-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Upgrade to Continue Reading</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="article-modal-support-resistance" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg w-full max-w-4xl max-h-screen overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-bold">Support & Resistance Explained</h2>
+                        <button class="modal-close text-gray-500 hover:text-black">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="premium-overlay">
+                        <div class="premium-content">
+                            <p class="mb-4">Support and resistance are fundamental concepts in technical analysis that help traders identify potential price reversals, breakouts, and trading opportunities. These levels represent zones where supply and demand forces interact, creating barriers to price movement.</p>
+                            
+                            <h3 class="text-xl font-bold mt-6 mb-3">What is Support?</h3>
+                            <p class="mb-4">Support is a price level where buying interest is expected to be strong enough to prevent the price from falling further. It's often visualized as a "floor" that props up prices. Support levels form because:</p>
+                            <ul class="list-disc pl-5 space-y-2 mb-6">
+                                <li>Buyers consider the asset undervalued at this price</li>
+                                <li>Previous sellers may regret selling and want to re-enter</li>
+                                <li>Investors who missed buying earlier see an opportunity</li>
+                            </ul>
+                            
+                            <h3 class="text-xl font-bold mt-6 mb-3">What is Resistance?</h3>
+                            <p class="mb-4">Resistance is a price level where selling pressure is expected to be strong enough to prevent the price from rising further. It's often visualized as a "ceiling" that caps price advances. Resistance levels form because:</p>
+                            <ul class="list-disc pl-5 space-y-2 mb-6">
+                                <li>Sellers consider the asset overvalued at this price</li>
+                                <li>Previous buyers may want to take profits</li>
+                                <li>Short sellers may see an opportunity to enter</li>
+                            </ul>
+                        </div>
+                        <div class="premium-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Upgrade to Continue Reading</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="article-modal-financial-statements" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg w-full max-w-4xl max-h-screen overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-bold">Reading Financial Statements</h2>
+                        <button class="modal-close text-gray-500 hover:text-black">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="premium-overlay">
+                        <div class="premium-content">
+                            <p class="mb-4">Financial statements are formal records of a company's financial activities. They provide valuable insights into a company's financial health, profitability, and operational efficiency. For investors, understanding how to read and analyze these statements is essential for making informed investment decisions.</p>
+                            
+                            <h3 class="text-xl font-bold mt-6 mb-3">The Three Key Financial Statements</h3>
+                            <ol class="list-decimal pl-5 space-y-4 mb-6">
+                                <li>
+                                    <strong>Balance Sheet</strong>: Provides a snapshot of a company's financial position at a specific point in time. It lists the company's assets, liabilities, and shareholders' equity following the fundamental accounting equation: Assets = Liabilities + Shareholders' Equity.
+                                    <ul class="list-disc pl-5 mt-2">
+                                        <li><strong>Assets</strong>: Resources owned by the company (cash, inventory, property, etc.)</li>
+                                        <li><strong>Liabilities</strong>: Obligations or debts the company owes to others</li>
+                                        <li><strong>Shareholders' Equity</strong>: The residual interest in the assets after deducting liabilities</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Income Statement</strong>: Shows a company's revenues, expenses, and profits over a specific period (usually a quarter or year). Also called a profit and loss statement, it reveals whether a company is generating profit or operating at a loss.
+                                    <ul class="list-disc pl-5 mt-2">
+                                        <li><strong>Revenue</strong>: Money earned from selling products or services</li>
+                                        <li><strong>Expenses</strong>: Costs incurred to generate revenue</li>
+                                        <li><strong>Net Income</strong>: Revenue minus expenses (the bottom line)</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="premium-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Upgrade to Continue Reading</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize variables to store user data
+        let userData = {
+            streak: {
+                currentStreak: 21,
+                lastLogin: new Date().toDateString(),
+                daysActive: ['Mon', 'Tue', 'Wed']
+            },
+            progress: {
+                dailyTasks: [true, true, false], // 2 out of 3 tasks completed
+                categories: {
+                    'technical-analysis': {
+                        completed: 3,
+                        total: 12
+                    },
+                    'fundamentals': {
+                        completed: 2,
+                        total: 10
+                    },
+                    'risk-management': {
+                        completed: 4,
+                        total: 8
+                    },
+                    'psychology': {
+                        completed: 3,
+                        total: 7
+                    },
+                    'options': {
+                        completed: 0,
+                        total: 9
+                    },
+                    'portfolio': {
+                        completed: 0,
+                        total: 6
+                    }
+                },
+                weeklyStats: {
+                    daysActive: 3,
+                    lessonsCompleted: 5,
+                    audioMinutes: 15
+                }
+            },
+            savedArticles: [],
+            completedLessons: []
+        };
+        
+        // Load user data from localStorage if available
+        function loadUserData() {
+            const savedData = localStorage.getItem('stockafellaUserData');
+            if (savedData) {
+                userData = JSON.parse(savedData);
+                
+                // Check if it's a new day and update streak accordingly
+                const today = new Date().toDateString();
+                if (userData.streak.lastLogin !== today) {
+                    userData.streak.lastLogin = today;
+                    updateStreak();
+                    saveUserData();
+                }
+            }
+            updateUI();
+        }
+        
+        // Save user data to localStorage
+        function saveUserData() {
+            localStorage.setItem('stockafellaUserData', JSON.stringify(userData));
+        }
+        
+        // Update UI based on user data
+        function updateUI() {
+            // Update daily progress
+            const completedTasks = userData.progress.dailyTasks.filter(task => task).length;
+            const totalTasks = userData.progress.dailyTasks.length;
+            const progressPercent = (completedTasks / totalTasks) * 100;
+            
+            document.getElementById('daily-progress').textContent = `${completedTasks}/${totalTasks} tasks`;
+            document.getElementById('daily-progress-bar').style.width = `${progressPercent}%`;
+            
+            // Update weekly stats
+            document.getElementById('days-active').textContent = `${userData.progress.weeklyStats.daysActive}/7`;
+            document.getElementById('days-active-bar').style.width = `${(userData.progress.weeklyStats.daysActive / 7) * 100}%`;
+            
+            document.getElementById('lessons-completed').textContent = `${userData.progress.weeklyStats.lessonsCompleted}/10`;
+            document.getElementById('lessons-completed-bar').style.width = `${(userData.progress.weeklyStats.lessonsCompleted / 10) * 100}%`;
+            
+            document.getElementById('audio-minutes').textContent = `${userData.progress.weeklyStats.audioMinutes}/30`;
+            document.getElementById('audio-minutes-bar').style.width = `${(userData.progress.weeklyStats.audioMinutes / 30) * 100}%`;
+            
+            // Set dates
+            const today = new Date();
+            const weekStart = new Date(today);
+            weekStart.setDate(today.getDate() - today.getDay() + 1);
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekStart.getDate() + 6);
+            
+            document.getElementById('weekly-date-range').textContent = `${weekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${weekEnd.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+            
+            const weekNum = getWeekNumber(today);
+            document.getElementById('week-number').textContent = `Week ${weekNum}`;
+            
+            // Update dates on progress page
+            const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+            const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            
+            if (document.getElementById('progress-date-range')) {
+                document.getElementById('progress-date-range').textContent = `${monthStart.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} - ${monthEnd.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}, ${today.getFullYear()}`;
+            }
+        }
+        
+        // Get week number from date
+        function getWeekNumber(d) {
+            const date = new Date(d);
+            date.setHours(0, 0, 0, 0);
+            date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+            const week1 = new Date(date.getFullYear(), 0, 4);
+            return 1 + Math.round(((date - week1) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+        }
+        
+        // Update streak data
+        function updateStreak() {
+            // Logic to update streak based on daily logins
+            // This is a simplified implementation
+            userData.streak.currentStreak += 1;
+            
+            // Update streak visualization
+            const streakCircles = document.querySelectorAll('.streak-circle');
+            const today = new Date().getDay(); // 0 = Sunday, 6 = Saturday
+            const dayIndices = today === 0 ? 6 : today - 1; // Convert to Monday = 0 index
+            
+            streakCircles[dayIndices].classList.add('active');
+            streakCircles[dayIndices].textContent = userData.streak.currentStreak;
+            
+            for (let i = 0; i < dayIndices; i++) {
+                streakCircles[i].classList.add('completed');
+                streakCircles[i].innerHTML = '<i class="fas fa-check"></i>';
+            }
+        }
+        
+        // Mission checkbox functionality
+        function setupMissionCheckboxes() {
+            document.querySelectorAll('.mission-checkbox').forEach((checkbox, index) => {
+                if (userData.progress.dailyTasks[index]) {
+                    checkbox.classList.add('checked');
+                    checkbox.innerHTML = '<i class="fas fa-check text-xs"></i>';
+                } else {
+                    checkbox.classList.remove('checked');
+                    checkbox.innerHTML = '';
+                }
+                
+                checkbox.addEventListener('click', () => {
+                    checkbox.classList.toggle('checked');
+                    if (checkbox.classList.contains('checked')) {
+                        checkbox.innerHTML = '<i class="fas fa-check text-xs"></i>';
+                        userData.progress.dailyTasks[index] = true;
+                    } else {
+                        checkbox.innerHTML = '';
+                        userData.progress.dailyTasks[index] = false;
+                    }
+                    
+                    // Update progress based on checked items
+                    const completedTasks = userData.progress.dailyTasks.filter(task => task).length;
+                    const totalTasks = userData.progress.dailyTasks.length;
+                    const progressPercent = (completedTasks / totalTasks) * 100;
+                    
+                    document.getElementById('daily-progress').textContent = `${completedTasks}/${totalTasks} tasks`;
+                    document.getElementById('daily-progress-bar').style.width = `${progressPercent}%`;
+                    
+                    saveUserData();
+                });
+            });
+        }
+        
+        // Audio Player Functionality
+        function setupAudioPlayers() {
+            document.querySelectorAll('.play-button').forEach(button => {
+                if (!button.dataset.audioId) return; // Skip buttons without audio IDs
+                
+                const audioId = button.dataset.audioId;
+                const audio = document.getElementById(audioId);
+                if (!audio) return;
+                
+                const icon = button.querySelector('i');
+                const progressContainer = button.parentElement.querySelector('.audio-progress');
+                const progressBar = progressContainer.querySelector('.audio-progress-bar');
+                const timeDisplay = button.parentElement.querySelector('.audio-time');
+                
+                // Format time in MM:SS
+                function formatTime(seconds) {
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                }
+                
+                // Update progress bar and time display
+                function updateProgress() {
+                    const percent = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = percent + '%';
+                    timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+                }
+                
+                button.addEventListener('click', () => {
+                    if (audio.paused) {
+                        // Pause all other audio elements first
+                        document.querySelectorAll('audio').forEach(a => {
+                            if (a.id !== audioId && !a.paused) {
+                                a.pause();
+                                // Reset other play buttons
+                                const otherPlayBtn = document.querySelector(`[data-audio-id="${a.id}"]`);
+                                if (otherPlayBtn) {
+                                    otherPlayBtn.querySelector('i').className = 'fas fa-play';
+                                }
+                            }
+                        });
+                        
+                        audio.play();
+                        icon.className = 'fas fa-pause';
+                    } else {
+                        audio.pause();
+                        icon.className = 'fas fa-play';
+                    }
+                });
+                
+                progressContainer.addEventListener('click', (e) => {
+                    const rect = progressContainer.getBoundingClientRect();
+                    const pos = (e.clientX - rect.left) / progressContainer.offsetWidth;
+                    audio.currentTime = pos * audio.duration;
+                    updateProgress();
+                });
+                
+                audio.addEventListener('timeupdate', updateProgress);
+                
+                audio.addEventListener('ended', () => {
+                    icon.className = 'fas fa-play';
+                    
+                    // Update audio minutes in user data
+                    userData.progress.weeklyStats.audioMinutes += Math.ceil(audio.duration / 60);
+                    saveUserData();
+                    updateUI();
+                });
+                
+                audio.addEventListener('loadedmetadata', () => {
+                    timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+                });
+            });
+            
+            // Also setup original audio players
+            const originalAudioIds = ['audio-technical', 'audio-balance', 'audio-chart'];
+            
+            originalAudioIds.forEach(audioId => {
+                const audio = document.getElementById(audioId);
+                if (!audio) return;
+                
+                const playButton = document.getElementById('play-' + audioId);
+                if (!playButton) return;
+                
+                const icon = playButton.querySelector('i');
+                const progressBar = document.getElementById('progress-bar-' + audioId);
+                const timeDisplay = document.getElementById('time-' + audioId);
+                const progressContainer = document.getElementById('progress-' + audioId);
+                
+                // Format time in MM:SS
+                function formatTime(seconds) {
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                }
+                
+                // Update progress bar and time display
+                function updateProgress() {
+                    const percent = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = percent + '%';
+                    timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+                }
+                
+                playButton.addEventListener('click', () => {
+                    if (audio.paused) {
+                        // Pause all other audio elements first
+                        originalAudioIds.forEach(id => {
+                            if (id !== audioId) {
+                                const otherAudio = document.getElementById(id);
+                                if (otherAudio && !otherAudio.paused) {
+                                    otherAudio.pause();
+                                    const otherPlayBtn = document.getElementById('play-' + id);
+                                    if (otherPlayBtn) {
+                                        otherPlayBtn.querySelector('i').className = 'fas fa-play';
+                                    }
+                                }
+                            }
+                        });
+                        
+                        audio.play();
+                        icon.className = 'fas fa-pause';
+                    } else {
+                        audio.pause();
+                        icon.className = 'fas fa-play';
+                    }
+                });
+                
+                progressContainer.addEventListener('click', (e) => {
+                    const rect = progressContainer.getBoundingClientRect();
+                    const pos = (e.clientX - rect.left) / progressContainer.offsetWidth;
+                    audio.currentTime = pos * audio.duration;
+                });
+                
+                audio.addEventListener('timeupdate', updateProgress);
+                
+                audio.addEventListener('ended', () => {
+                    icon.className = 'fas fa-play';
+                    
+                    // Update audio minutes in user data
+                    userData.progress.weeklyStats.audioMinutes += Math.ceil(audio.duration / 60);
+                    saveUserData();
+                    updateUI();
+                });
+                
+                audio.addEventListener('loadedmetadata', () => {
+                    timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+                });
+            });
+        }
+        
+        // Book Summary Expansion
+        function setupBookSummaries() {
+            document.querySelectorAll('.expand-summary').forEach(button => {
+                button.addEventListener('click', () => {
+                    const summary = button.previousElementSibling;
+                    summary.classList.toggle('expanded');
+                    
+                    if (summary.classList.contains('expanded')) {
+                        button.textContent = 'Read Less';
+                    } else {
+                        button.textContent = 'Read More';
+                    }
+                });
+            });
+        }
+        
+        // Navigation Functionality
+        function setupNavigation() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    link.classList.add('active');
+                    
+                    // Show corresponding page
+                    const pageId = link.getAttribute('data-page') + '-page';
+                    document.querySelectorAll('.page-content').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    document.getElementById(pageId).classList.add('active');
+                });
+            });
+            
+            // Set initial active page (For You)
+            document.querySelector('.nav-link[data-page="for-you"]').classList.add('active');
+            document.getElementById('for-you-page').classList.add('active');
+        }
+        
+        // Category Functionality
+        function setupCategories() {
+            document.querySelectorAll('.category-card[data-category-page]').forEach(card => {
+                card.addEventListener('click', () => {
+                    // Update active category card
+                    document.querySelectorAll('.category-card[data-category-page]').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    card.classList.add('active');
+                    
+                    // Show corresponding category content
+                    const categoryId = card.getAttribute('data-category-page') + '-content';
+                    document.querySelectorAll('.category-content').forEach(content => {
+                        content.classList.remove('active');
+                        content.classList.add('hidden');
+                    });
+                    const categoryContent = document.getElementById(categoryId);
+                    if (categoryContent) {
+                        categoryContent.classList.remove('hidden');
+                        categoryContent.classList.add('active');
+                    }
+                });
+            });
+            
+            // Home page category cards
+            document.querySelectorAll('.category-card[data-category]').forEach(card => {
+                card.addEventListener('click', () => {
+                    const category = card.getAttribute('data-category');
+                    
+                    // Navigate to categories page
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    document.querySelector('.nav-link[data-page="categories"]').classList.add('active');
+                    
+                    document.querySelectorAll('.page-content').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    document.getElementById('categories-page').classList.add('active');
+                    
+                    // Select the corresponding category
+                    document.querySelectorAll('.category-card[data-category-page]').forEach(c => {
+                        c.classList.remove('active');
+                        if (c.getAttribute('data-category-page') === category) {
+                            c.classList.add('active');
+                        }
+                    });
+                    
+                    document.querySelectorAll('.category-content').forEach(content => {
+                        content.classList.remove('active');
+                        content.classList.add('hidden');
+                    });
+                    const categoryContent = document.getElementById(category + '-content');
+                    if (categoryContent) {
+                        categoryContent.classList.remove('hidden');
+                        categoryContent.classList.add('active');
+                    }
+                });
+            });
+        }
+        
+        // Library Functionality
+        function setupLibrary() {
+            document.querySelectorAll('.library-filter').forEach(filter => {
+                filter.addEventListener('click', () => {
+                    // Update active filter
+                    document.querySelectorAll('.library-filter').forEach(f => {
+                        f.classList.remove('active');
+                    });
+                    filter.classList.add('active');
+                    
+                    // Filter library content
+                    // In a real app, this would show/hide elements based on the filter
+                });
+            });
+        }
+        
+        // Modal Functionality
+        function setupModals() {
+            // Set up article modals
+            document.querySelectorAll('.card[data-article]').forEach(card => {
+                card.addEventListener('click', () => {
+                    const articleId = card.getAttribute('data-article');
+                    const modal = document.getElementById('article-modal-' + articleId);
+                    if (modal) {
+                        modal.classList.remove('hidden');
+                    }
+                });
+            });
+            
+            // Close modals
+            document.querySelectorAll('.modal-close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', () => {
+                    const modal = closeBtn.closest('[id^="article-modal"]');
+                    if (modal) {
+                        modal.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Close modals when clicking outside
+            document.querySelectorAll('[id^="article-modal"]').forEach(modal => {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        modal.classList.add('hidden');
+                    }
+                });
+            });
+        }
+        
+        // Initialize everything on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            setupMissionCheckboxes();
+            setupAudioPlayers();
+            setupBookSummaries();
+            setupNavigation();
+            setupCategories();
+            setupLibrary();
+            setupModals();
+        });
+    </script>
+</body>
+</html>
