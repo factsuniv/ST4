@@ -18,7 +18,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--primary);
+            color: var(--dark-gray); /* Changed from --primary to --dark-gray */
             background-color: #FFFFFF;
             line-height: 1.5;
             padding-bottom: 60px;
@@ -63,6 +63,7 @@
             margin-bottom: 20px;
             padding-bottom: 8px;
             border-bottom: 2px solid var(--light-gray);
+            color: var(--primary); /* Ensured section titles use primary color */
         }
         
         .card {
@@ -82,6 +83,7 @@
             font-weight: 600;
             font-size: 18px;
             margin-bottom: 8px;
+            color: var(--primary); /* Ensured card titles use primary color */
         }
         
         .card-content {
@@ -149,12 +151,15 @@
         
         .featured-card-image {
             height: 160px;
-            background-color: #F0F0F0;
+            background-color: #F0F0F0; /* Kept existing background */
             display: flex;
+            flex-direction: column; /* Stack icon and text vertically */
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 20px;
+            text-align: center; /* Center text if any */
+            font-weight: 600; /* Adjusted font-weight */
+            font-size: 16px; /* Adjusted font-size */
+            color: var(--dark-gray); /* Text color for title below icon */
         }
         
         .audio-player {
@@ -168,6 +173,7 @@
         .audio-title {
             font-weight: 600;
             margin-bottom: 8px;
+            color: var(--primary); /* Ensured audio titles use primary color */
         }
         
         .audio-description {
@@ -417,7 +423,7 @@
                     <a href="#" class="nav-link" data-page="progress">Progress</a>
                 </nav>
                 <div class="flex items-center">
-                    <button class="flex items-center px-4 py-2 rounded-md bg-black text-white">
+                    <button class="flex items-center px-4 py-2 rounded-md bg-black text-white hover:bg-gray-800" data-page="upgrade" id="upgrade-button-header">
                         <i class="fas fa-crown mr-2"></i>
                         <span>Upgrade</span>
                     </button>
@@ -560,7 +566,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Featured Card 1 -->
                     <div class="card featured-card" data-article="market-cycles">
-                        <div class="featured-card-image bg-gray-100">
+                        <div class="featured-card-image">
+                            <i class="fas fa-chart-bar fa-2x text-gray-400 mb-2"></i>
                             Stock Market Basics
                         </div>
                         <div class="p-4 flex-grow">
@@ -579,7 +586,8 @@
                     
                     <!-- Featured Card 2 -->
                     <div class="card featured-card" data-article="support-resistance">
-                        <div class="featured-card-image bg-gray-100">
+                        <div class="featured-card-image">
+                            <i class="fas fa-tools fa-2x text-gray-400 mb-2"></i>
                             Technical Analysis
                         </div>
                         <div class="p-4 flex-grow">
@@ -598,7 +606,8 @@
                     
                     <!-- Featured Card 3 -->
                     <div class="card featured-card" data-article="financial-statements">
-                        <div class="featured-card-image bg-gray-100">
+                        <div class="featured-card-image">
+                            <i class="fas fa-file-alt fa-2x text-gray-400 mb-2"></i>
                             Fundamental Analysis
                         </div>
                         <div class="p-4 flex-grow">
@@ -755,8 +764,9 @@
                 <h2 class="section-title">Recommended Books</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="card book-card" data-book="trading-zone">
-                        <div class="p-4 bg-gray-100 flex items-center justify-center" style="height: 180px;">
-                            <div class="text-center">
+                        <div class="p-4 bg-gray-100 flex flex-col items-center justify-center text-center" style="height: 180px;">
+                            <i class="fas fa-book-open fa-2x text-gray-400 mb-2"></i>
+                            <div>
                                 <div class="font-bold">Trading in the Zone</div>
                                 <div class="text-sm text-gray-500">Mark Douglas</div>
                             </div>
@@ -783,8 +793,9 @@
                     </div>
                     
                     <div class="card book-card" data-book="intelligent-investor">
-                        <div class="p-4 bg-gray-100 flex items-center justify-center" style="height: 180px;">
-                            <div class="text-center">
+                        <div class="p-4 bg-gray-100 flex flex-col items-center justify-center text-center" style="height: 180px;">
+                            <i class="fas fa-book-open fa-2x text-gray-400 mb-2"></i>
+                            <div>
                                 <div class="font-bold">The Intelligent Investor</div>
                                 <div class="text-sm text-gray-500">Benjamin Graham</div>
                             </div>
@@ -812,8 +823,9 @@
                     </div>
                     
                     <div class="card book-card" data-book="technical-analysis">
-                        <div class="p-4 bg-gray-100 flex items-center justify-center" style="height: 180px;">
-                            <div class="text-center">
+                        <div class="p-4 bg-gray-100 flex flex-col items-center justify-center text-center" style="height: 180px;">
+                            <i class="fas fa-book-open fa-2x text-gray-400 mb-2"></i>
+                            <div>
                                 <div class="font-bold">Technical Analysis of Financial Markets</div>
                                 <div class="text-sm text-gray-500">John Murphy</div>
                             </div>
@@ -842,8 +854,9 @@
                     </div>
                     
                     <div class="card book-card" data-book="one-up">
-                        <div class="p-4 bg-gray-100 flex items-center justify-center" style="height: 180px;">
-                            <div class="text-center">
+                        <div class="p-4 bg-gray-100 flex flex-col items-center justify-center text-center" style="height: 180px;">
+                            <i class="fas fa-book-open fa-2x text-gray-400 mb-2"></i>
+                            <div>
                                 <div class="font-bold">One Up on Wall Street</div>
                                 <div class="text-sm text-gray-500">Peter Lynch</div>
                             </div>
@@ -930,8 +943,8 @@
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <div class="lg:col-span-2">
                             <h3 class="font-bold text-lg mb-3">Overview</h3>
-                            <p class="mb-4">Technical analysis is a trading discipline that evaluates investments and identifies trading opportunities by analyzing statistical trends gathered from trading activity, such as price movement and volume.</p>
-                            <p class="mb-6">Technical analysts believe that historical trading activity and price changes of a security can be valuable indicators of the security's future price movements when paired with appropriate investing or trading rules.</p>
+                            <p class="mb-4">Technical analysis is a trading discipline that uses historical price charts and trading data to predict future price movements. It involves examining patterns, trends (like support and resistance levels), and signals from various indicators (e.g., RSI, moving averages) to make informed buy or sell decisions.</p>
+                            <p class="mb-6">Technicians believe that past market behavior, reflected in price and volume, can provide valuable insights into future performance because market psychology tends to repeat itself.</p>
 
                             <h3 class="font-bold text-lg mb-3">Subcategories</h3>
                             <div class="space-y-3">
@@ -975,7 +988,7 @@
                             <div class="card featured-card mb-4">
                                 <div class="p-4 flex-grow">
                                     <h3 class="card-title">Support & Resistance</h3>
-                                    <p class="card-content">Discover how to identify key support and resistance levels for better trade entries and exits.</p>
+                                    <p class="card-content">Support is where a downtrend may pause due to demand (a floor), while resistance is where an uptrend may pause due to supply (a ceiling). Identifying these helps plan trades.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">Basic</span>
@@ -988,8 +1001,8 @@
 
                             <div class="card featured-card mb-4">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">Moving Averages</h3>
-                                    <p class="card-content">Learn how to use simple and exponential moving averages to identify trends and potential reversals.</p>
+                                    <h3 class="card-title">Chart Patterns & Trends</h3>
+                                    <p class="card-content">Technical analysis heavily relies on identifying chart patterns (like head-and-shoulders or triangles) and analyzing trends. These can indicate potential breakouts or reversals.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">Intermediate</span>
@@ -1017,8 +1030,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="card">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">Introduction to Technical Analysis</h3>
-                                    <p class="card-content">Learn the core principles and assumptions behind technical analysis.</p>
+                                    <h3 class="card-title">What is Technical Analysis?</h3>
+                                    <p class="card-content">It's a method using historical market data, primarily price and volume, to forecast future price movements, believing that patterns and trends repeat.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">5 min read</span>
@@ -1031,8 +1044,8 @@
                             
                             <div class="card">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">Chart Types Explained</h3>
-                                    <p class="card-content">Compare line, bar, and candlestick charts and learn when to use each.</p>
+                                    <h3 class="card-title">Identifying Support Levels</h3>
+                                    <p class="card-content">Support is a price level where a downtrend may pause due to demand. It acts as a floor, and increased buying interest can halt the decline.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">7 min read</span>
@@ -1045,8 +1058,8 @@
                             
                             <div class="card">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">The MACD Indicator</h3>
-                                    <p class="card-content">Master the Moving Average Convergence Divergence indicator for timing entries.</p>
+                                    <h3 class="card-title">Understanding Resistance</h3>
+                                    <p class="card-content">Resistance is where an uptrend may pause due to supply. It acts as a ceiling; as prices approach resistance, selling interest often increases.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">10 min read</span>
@@ -1072,8 +1085,8 @@
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <div class="lg:col-span-2">
                             <h3 class="font-bold text-lg mb-3">Overview</h3>
-                            <p class="mb-4">Fundamental analysis is a method of evaluating securities by attempting to measure the intrinsic value of a stock. Fundamental analysts study everything from the overall economy and industry conditions to the financial condition and management of companies.</p>
-                            <p class="mb-6">The end goal is to arrive at a number that an investor can compare with a security's current price in order to see whether the security is undervalued or overvalued.</p>
+                            <p class="mb-4">Fundamental analysis is an investment approach focused on evaluating a company's intrinsic value by examining its financial health, management, industry position, and macroeconomic factors. It involves analyzing data like earnings, revenue, cash flow, and balance sheet strength.</p>
+                            <p class="mb-6">Fundamental traders often look for opportunities around earnings reports, analyst ratings, stock splits, and M&A activity, typically with a longer-term perspective than technical traders.</p>
 
                             <h3 class="font-bold text-lg mb-3">Subcategories</h3>
                             <div class="space-y-3">
@@ -1108,8 +1121,8 @@
                             <h3 class="font-bold text-lg mb-3">Featured Lessons</h3>
                             <div class="card featured-card mb-4">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">Reading a Balance Sheet</h3>
-                                    <p class="card-content">Learn how to interpret a company's balance sheet to assess its financial health.</p>
+                                    <h3 class="card-title">Understanding Financial Statements</h3>
+                                    <p class="card-content">Learn to interpret the Balance Sheet (assets, liabilities, equity), Income Statement (profit/loss), and Cash Flow Statement (cash movements) to assess a company's health.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">Basic</span>
@@ -1122,8 +1135,8 @@
 
                             <div class="card featured-card mb-4">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">Discounted Cash Flow</h3>
-                                    <p class="card-content">Master the DCF model to determine a company's intrinsic value.</p>
+                                    <h3 class="card-title">Impact of Company News</h3>
+                                    <p class="card-content">Company-specific news, like earnings reports or new product launches, can significantly impact stock prices. Learn how these events affect fundamental trading decisions.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">Advanced</span>
@@ -1151,8 +1164,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="card">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">Introduction to Fundamental Analysis</h3>
-                                    <p class="card-content">Learn the basics of company valuation and financial statement analysis.</p>
+                                    <h3 class="card-title">What is Fundamental Analysis?</h3>
+                                    <p class="card-content">It's about assessing a company's financial health by studying its statements, management, and the economy to find its intrinsic value.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">6 min read</span>
@@ -1165,8 +1178,8 @@
                             
                             <div class="card">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">Income Statement Analysis</h3>
-                                    <p class="card-content">Learn how to evaluate a company's profitability and operating efficiency.</p>
+                                    <h3 class="card-title">Key Financial Statements</h3>
+                                    <p class="card-content">The Balance Sheet shows assets/liabilities, Income Statement details profit/loss, and Cash Flow tracks cash movements. All are vital for analysis.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">8 min read</span>
@@ -1179,8 +1192,8 @@
                             
                             <div class="card">
                                 <div class="p-4 flex-grow">
-                                    <h3 class="card-title">PE Ratio and Other Valuation Metrics</h3>
-                                    <p class="card-content">Learn how to use price-to-earnings and other ratios to assess stock valuation.</p>
+                                    <h3 class="card-title">Trading on Earnings Reports</h3>
+                                    <p class="card-content">Earnings reports show a company's performance. Surprises in these reports (good or bad) can cause big stock price moves and trading chances.</p>
                                 </div>
                                 <div class="px-4 pb-4 flex justify-between items-center">
                                     <span class="card-tag">7 min read</span>
@@ -1662,6 +1675,88 @@
                 </div>
             </section>
         </div>
+
+        <!-- Upgrade Page -->
+        <div class="page-content" id="upgrade-page">
+            <section class="py-8">
+                <h2 class="section-title">Upgrade Your Plan</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Free Plan -->
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-2">Free</h3>
+                        <p class="text-3xl font-bold mb-4">$0<span class="text-sm font-normal text-gray-500">/month</span></p>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Limited access to articles
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Basic progress tracking
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Community access
+                            </li>
+                        </ul>
+                        <button class="w-full py-2 px-4 bg-gray-200 text-gray-700 rounded-md font-medium" disabled>Current Plan</button>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="card p-6 border-2 border-accent shadow-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold">Premium</h3>
+                            <span class="bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</span>
+                        </div>
+                        <p class="text-3xl font-bold mb-4">$9.99<span class="text-sm font-normal text-gray-500">/month</span></p>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Full access to all articles & courses
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Advanced progress tracking
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Access to audio lessons
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Premium support
+                            </li>
+                        </ul>
+                        <button class="w-full py-2 px-4 bg-accent text-white rounded-md font-medium hover:bg-opacity-90">Upgrade to Premium</button>
+                    </div>
+
+                    <!-- Pro Plan -->
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-2">Pro</h3>
+                        <p class="text-3xl font-bold mb-4">$19.99<span class="text-sm font-normal text-gray-500">/month</span></p>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                All Premium features
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Downloadable resources
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Access to exclusive webinars/Q&A
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Priority support
+                            </li>
+                        </ul>
+                        <button class="w-full py-2 px-4 bg-black text-white rounded-md font-medium hover:bg-gray-800">Upgrade to Pro</button>
+                    </div>
+                </div>
+            </section>
+        </div>
         
         <!-- Article Modal Templates -->
         <div id="article-modal-market-cycles" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
@@ -1676,20 +1771,24 @@
                     
                     <div class="premium-overlay">
                         <div class="premium-content">
-                            <p class="mb-4">Market cycles are the periods of upward and downward movements of a market or asset class. These cycles consist of four distinct phases: accumulation, uptrend (or markup), distribution, and downtrend (or markdown). Understanding these cycles is crucial for making informed investment decisions.</p>
+                            <p class="mb-4">Market cycles, also known as stock market cycles, refer to patterns or trends that emerge in different market or business environments. During these cycles, certain securities or asset classes may outperform others as their business models align with growth conditions. Understanding these cycles is crucial for making informed investment decisions.</p>
+                            <p class="mb-4">It's important to note that pinpointing the exact current phase of a market cycle can be challenging, but they are generally characterized by four distinct phases:</p>
                             
                             <h3 class="text-xl font-bold mt-6 mb-3">The Four Phases of Market Cycles</h3>
-                            <ol class="list-decimal pl-5 space-y-4 mb-6">
+                            <ul class="list-disc pl-5 space-y-3 mb-6">
                                 <li>
-                                    <strong>Accumulation Phase</strong>: This phase occurs after a market decline, when prices have typically bottomed out. During accumulation, sentiment is still negative, but informed investors begin to buy. Prices trade in a range, and there's relatively low volume as most market participants remain pessimistic. This is often an ideal time to buy, though it can be psychologically difficult as it goes against prevailing sentiment.
+                                    <strong>Accumulation Phase:</strong> This phase occurs after a market has bottomed out. Sentiment is generally still negative, but innovators and early adopters see opportunity and begin to buy, anticipating the end of the decline.
                                 </li>
                                 <li>
-                                    <strong>Uptrend (Markup) Phase</strong>: As more investors recognize the improving conditions, prices begin to rise steadily. Trading volume increases, technical indicators turn positive, and investor sentiment improves. The early part of this phase offers good buying opportunities, while the later part may be when inexperienced investors rush in (often a warning sign).
+                                    <strong>Mark-up Phase (Uptrend):</strong> As market sentiment improves and more investors enter, prices begin to rise steadily. This phase is characterized by increasing trading volume and positive technical indicators.
                                 </li>
                                 <li>
-                                    <strong>Distribution Phase</strong>: This phase marks the end of the uptrend. Prices typically move sideways with increased volatility. Informed investors begin to sell to less-informed, often euphoric buyers. This phase is characterized by excessive optimism, high valuations, and often increased media coverage of the asset class. Warning signs include divergences in technical indicators and rapid price advances (blow-off tops).
+                                    <strong>Distribution Phase:</strong> After a significant uptrend, the asset price reaches a peak. Sellers begin to dominate as informed investors start taking profits, distributing their holdings to less experienced buyers who might be entering late.
                                 </li>
-                            </ol>
+                                <li>
+                                    <strong>Mark-down Phase (Downtrend):</strong> Once demand is exhausted and selling pressure takes over, the price starts to decline. This phase is characterized by falling prices and negative sentiment until the cycle eventually bottoms out, potentially leading to a new accumulation phase.
+                                </li>
+                            </ul>
                         </div>
                         <div class="premium-badge">
                             <i class="fas fa-lock"></i>
@@ -1712,23 +1811,24 @@
                     
                     <div class="premium-overlay">
                         <div class="premium-content">
-                            <p class="mb-4">Support and resistance are fundamental concepts in technical analysis that help traders identify potential price reversals, breakouts, and trading opportunities. These levels represent zones where supply and demand forces interact, creating barriers to price movement.</p>
+                            <p class="mb-4">Support and resistance are critical concepts in technical analysis. They represent price levels on a chart where the prevailing trend may pause or reverse due to supply and demand dynamics. Mastering these concepts can help traders identify strategic entry and exit points.</p>
                             
-                            <h3 class="text-xl font-bold mt-6 mb-3">What is Support?</h3>
-                            <p class="mb-4">Support is a price level where buying interest is expected to be strong enough to prevent the price from falling further. It's often visualized as a "floor" that props up prices. Support levels form because:</p>
+                            <h3 class="text-xl font-bold mt-6 mb-3">Understanding Support</h3>
+                            <p class="mb-4">Support is a price level where a downtrend is expected to pause due to a concentration of demand. Think of it as a 'floor' below the current price. When an asset's price falls towards a support level, it indicates that buying interest is increasing, which can halt the price decline and potentially lead to a reversal or consolidation.</p>
                             <ul class="list-disc pl-5 space-y-2 mb-6">
-                                <li>Buyers consider the asset undervalued at this price</li>
-                                <li>Previous sellers may regret selling and want to re-enter</li>
-                                <li>Investors who missed buying earlier see an opportunity</li>
+                                <li>Support levels are typically found at previous lows.</li>
+                                <li>Increased buying volume at a support level can confirm its strength.</li>
+                                <li>A break below a support level may indicate that sellers have overcome buyers, and the price could continue to fall.</li>
                             </ul>
                             
-                            <h3 class="text-xl font-bold mt-6 mb-3">What is Resistance?</h3>
-                            <p class="mb-4">Resistance is a price level where selling pressure is expected to be strong enough to prevent the price from rising further. It's often visualized as a "ceiling" that caps price advances. Resistance levels form because:</p>
+                            <h3 class="text-xl font-bold mt-6 mb-3">Understanding Resistance</h3>
+                            <p class="mb-4">Resistance is the opposite of support. It's a price level where an uptrend is expected to pause due to a concentration of supply. Think of it as a 'ceiling' above the current price. As an asset's price rises towards a resistance level, selling interest typically increases, which can halt the price advance and potentially lead to a reversal or consolidation.</p>
                             <ul class="list-disc pl-5 space-y-2 mb-6">
-                                <li>Sellers consider the asset overvalued at this price</li>
-                                <li>Previous buyers may want to take profits</li>
-                                <li>Short sellers may see an opportunity to enter</li>
+                                <li>Resistance levels are typically found at previous highs.</li>
+                                <li>Increased selling volume at a resistance level can confirm its strength.</li>
+                                <li>A break above a resistance level may indicate that buyers have overcome sellers, and the price could continue to rise.</li>
                             </ul>
+                             <p class="mt-4">Traders use support and resistance to make decisions: buying near support in an uptrend and selling near resistance in a downtrend. If a support level is broken, it may become a new resistance level, and conversely, if a resistance level is broken, it may become new support.</p>
                         </div>
                         <div class="premium-badge">
                             <i class="fas fa-lock"></i>
@@ -1751,27 +1851,21 @@
                     
                     <div class="premium-overlay">
                         <div class="premium-content">
-                            <p class="mb-4">Financial statements are formal records of a company's financial activities. They provide valuable insights into a company's financial health, profitability, and operational efficiency. For investors, understanding how to read and analyze these statements is essential for making informed investment decisions.</p>
+                            <p class="mb-4">Understanding a company's financial statements is crucial for any investor. These documents provide a scorecard of a company's financial health and performance. The three main statements offer different perspectives:</p>
                             
-                            <h3 class="text-xl font-bold mt-6 mb-3">The Three Key Financial Statements</h3>
-                            <ol class="list-decimal pl-5 space-y-4 mb-6">
+                            <h3 class="text-xl font-bold mt-6 mb-3">Key Financial Statements</h3>
+                            <ul class="list-disc pl-5 space-y-4 mb-6">
                                 <li>
-                                    <strong>Balance Sheet</strong>: Provides a snapshot of a company's financial position at a specific point in time. It lists the company's assets, liabilities, and shareholders' equity following the fundamental accounting equation: Assets = Liabilities + Shareholders' Equity.
-                                    <ul class="list-disc pl-5 mt-2">
-                                        <li><strong>Assets</strong>: Resources owned by the company (cash, inventory, property, etc.)</li>
-                                        <li><strong>Liabilities</strong>: Obligations or debts the company owes to others</li>
-                                        <li><strong>Shareholders' Equity</strong>: The residual interest in the assets after deducting liabilities</li>
-                                    </ul>
+                                    <strong>Balance Sheet:</strong> This statement offers a snapshot of a company's assets (what it owns), liabilities (what it owes), and shareholders' equity at a specific point in time. It follows the fundamental equation: Assets = Liabilities + Equity. Think of it as a statement of net worth for the company.
                                 </li>
                                 <li>
-                                    <strong>Income Statement</strong>: Shows a company's revenues, expenses, and profits over a specific period (usually a quarter or year). Also called a profit and loss statement, it reveals whether a company is generating profit or operating at a loss.
-                                    <ul class="list-disc pl-5 mt-2">
-                                        <li><strong>Revenue</strong>: Money earned from selling products or services</li>
-                                        <li><strong>Expenses</strong>: Costs incurred to generate revenue</li>
-                                        <li><strong>Net Income</strong>: Revenue minus expenses (the bottom line)</li>
-                                    </ul>
+                                    <strong>Income Statement (Profit & Loss):</strong> This statement shows a company's financial performance over a specific period (e.g., a quarter or a year). It details revenues (or sales), the costs to achieve those revenues (cost of goods sold, operating expenses), and ultimately, the company's net profit or loss.
                                 </li>
-                            </ol>
+                                <li>
+                                    <strong>Cash Flow Statement:</strong> This statement tracks all the cash inflows and outflows within a company over a period. It's broken down into three main activities: operating (day-to-day business), investing (purchase or sale of assets like property or equipment), and financing (activities involving debt, equity, and dividends). It helps assess a company's ability to generate cash and meet its obligations.
+                                </li>
+                            </ul>
+                            <p class="mt-4">While these statements are vital, remember to also read the accompanying notes to the financial statements, as they provide important context and details about the accounting methods used. Understanding the business itself and non-financial factors is also key to a comprehensive analysis.</p>
                         </div>
                         <div class="premium-badge">
                             <i class="fas fa-lock"></i>
@@ -2122,28 +2216,56 @@
         
         // Navigation Functionality
         function setupNavigation() {
-            document.querySelectorAll('.nav-link').forEach(link => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageContents = document.querySelectorAll('.page-content');
+            const upgradeButton = document.getElementById('upgrade-button-header');
+
+            function showPage(pageId) {
+                pageContents.forEach(page => {
+                    if (page.id === pageId) {
+                        page.classList.add('active');
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+                window.scrollTo(0, 0);
+            }
+
+            navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     
-                    // Update active nav link
-                    document.querySelectorAll('.nav-link').forEach(navLink => {
-                        navLink.classList.remove('active');
-                    });
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
                     link.classList.add('active');
                     
-                    // Show corresponding page
-                    const pageId = link.getAttribute('data-page') + '-page';
-                    document.querySelectorAll('.page-content').forEach(page => {
-                        page.classList.remove('active');
-                    });
-                    document.getElementById(pageId).classList.add('active');
+                    const pageIdToShow = link.getAttribute('data-page') + '-page';
+                    showPage(pageIdToShow);
                 });
             });
+
+            if (upgradeButton) {
+                upgradeButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    // Optionally, style the upgrade button as active or differently
+                    // upgradeButton.classList.add('active'); // Example: if you add an active style for it
+
+                    const pageIdToShow = upgradeButton.getAttribute('data-page') + '-page';
+                    showPage(pageIdToShow);
+                });
+            }
             
             // Set initial active page (For You)
-            document.querySelector('.nav-link[data-page="for-you"]').classList.add('active');
-            document.getElementById('for-you-page').classList.add('active');
+            const initialPageLink = document.querySelector('.nav-link[data-page="for-you"]');
+            if (initialPageLink) {
+                initialPageLink.classList.add('active');
+                 // Ensure the correct page is shown on load based on the active link
+                const initialPageId = initialPageLink.getAttribute('data-page') + '-page';
+                showPage(initialPageId);
+            } else {
+                // Default to for-you-page if no link is active for some reason
+                showPage('for-you-page');
+            }
         }
         
         // Category Functionality
